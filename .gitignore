@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data (don't push raw data files)
+*.csv
+*.xlsx
+data/
+
+# Models
+*.pkl
+*.joblib
+*.h5
+
+# OS
+.DS_Store
