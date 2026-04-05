@@ -25,29 +25,29 @@ This project builds an AI system that:
 ---
 
 ## Architecture
+```
 ┌─────────────────────────────────────────────────────────┐
 │                    User / Application                    │
 └─────────────────────┬───────────────────────────────────┘
-│
-┌───────────▼───────────┐
-│    ReAct Agent        │  ← Module 4
-│  (Gemini + LangChain) │
-└──────┬────────┬───────┘
-│        │
-┌────────────▼──┐  ┌──▼──────────────┐
-│  predict_     │  │   search_docs   │
-│  failure      │  │   (RAG Pipeline)│  ← Module 2
-│  (FastAPI)    │  │   LangChain +   │
-└──────┬────────┘  │   FAISS +       │
-│           │   Gemini API    │
-┌──────▼────────┐  └────────┬────────┘
-│  XGBoost      │           │
-│  Classifier   │  ┌────────▼────────┐
-│  + SHAP       │  │  Maintenance    │
-└───────────────┘  │  Documents      │
-↑             └─────────────────┘
-← Module 1
-← Module 3 (Docker)
+                      │
+          ┌───────────▼───────────┐
+          │      ReAct Agent      │  ← Module 4
+          │  (Gemini + LangChain) │
+          └──────┬────────┬───────┘
+                 │        │
+    ┌────────────▼──┐  ┌──▼─────────────────┐
+    │  predict_     │  │   search_docs       │
+    │  failure      │  │   (RAG Pipeline)    │ ← Module 2
+    │  (FastAPI)    │  │   LangChain + FAISS │
+    └──────┬────────┘  └────────┬────────────┘
+           │                    │
+    ┌──────▼────────┐  ┌────────▼────────┐
+    │  XGBoost      │  │  Maintenance    │
+    │  + SHAP       │  │  Documents      │
+    └───────────────┘  └─────────────────┘
+    ↑ Module 1
+    ↑ Module 3 (Docker)
+```
 
 ---
 
@@ -202,6 +202,7 @@ Open `4_agent/01_agent.ipynb` and run all cells.
 ---
 
 ## Project structure
+```
 predictive-maintenance-ai/
 ├── 1_tabular_ml/
 │   ├── 01_eda.ipynb          # EDA and data understanding
@@ -214,4 +215,5 @@ predictive-maintenance-ai/
 │   ├── Dockerfile            # Container definition
 │   └── requirements.txt      # Pinned dependencies
 └── 4_agent/
-└── 01_agent.ipynb        # ReAct agent with failure mode analysis
+    └── 01_agent.ipynb        # ReAct agent with failure mode analysis
+```
